@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def clean_data():
     '''
     Returns
@@ -16,7 +15,4 @@ def clean_data():
     data['diagnosis'] = data['diagnosis'].map({'M': 1, 'B': 0}) #   malignant will be 1, benign will be 0
 
     return data
-
-data = clean_data()
-
     
