@@ -44,7 +44,7 @@ def standardize_df(df):
 
     df_std = df.copy()
 
-    for col in df.columns:      #Only works if pandas is imported on file that calls the function
+    for col in df.columns:
         mean = df[col].mean()   #Returns mean
         std = df[col].std()     #Returns standard deviation
         df_std[col] = (df[col] - mean) / std    #Finally aplly z-score
