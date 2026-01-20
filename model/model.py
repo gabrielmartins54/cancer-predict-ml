@@ -1,7 +1,6 @@
 import sys
 import os
 
-# Adiciona a pasta pai ao caminho de busca do Python
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  #For temporary testing
 
 from processing.cleaning import clean_data
