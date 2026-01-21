@@ -1,22 +1,29 @@
-import sys
-import os
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  #For temporary testing
 
-from processing.cleaning import clean_data
-from processing.scaler import standardize_df as df_std
-#########
-# Model #
-#########
+def x_data(data):
+    X = data.drop(['diagnosis'], axis=1) #Dropping the expected output and using the other values
+    return X
 
-data = clean_data()
+def y_data(data):
+    y = data['diagnosis'] #Using the Diagnosis as the expected output
+    return y
 
-def make_model(data):
-    X_train = data.drop(['diagnosis'], axis=1) #Dropping the expected output and using the other values
-    y_train = data['diagnosis'] #Using the Diagnosis as the expected output
+def split(x, y, state=42, size=0.2):
+    x_train, x_test, y_train, y_test = train_test_split(
+        x, y, test_size=size, random_state=state
+    )
+    return x_train, x_test, y_train, y_test
 
-    
-    X_scaled = df_std(X_train)
-    print(X_scaled.round(3))
+def train_test(x_train, x_test, y_train, y_test):
+    model = LogisticRegression()
+    model.fit(x_train, y_train)
 
-make_model(data)
+    y_hat = model.predict(x_test)
+    print('Accuracy: ', accuracy_score(y_test, y_hat))
+    print('Classification: \n', classification_report(y_test, y_hat))
+    return y_hat
+
