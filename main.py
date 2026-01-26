@@ -1,4 +1,4 @@
-from model.model import *
+from model.model import x_data, y_data, split, train_test
 from processing.cleaning import clean_data
 from sklearn.preprocessing import StandardScaler
 import pickle
