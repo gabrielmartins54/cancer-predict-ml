@@ -11,7 +11,7 @@ def main():
 
     scaler = StandardScaler()
     x_train = scaler.fit_transform(x_train)
-    x_test = scaler.fit_transform(x_test)
+    x_test = scaler.transform(x_test)
 
     prediction = train_test(x_train, x_test, y_train, y_test)
 
