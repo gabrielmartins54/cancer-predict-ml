@@ -25,5 +25,5 @@ def train_test(x_train, x_test, y_train, y_test):
     y_hat = model.predict(x_test)
     print('Accuracy: ', accuracy_score(y_test, y_hat))
     print('Classification: \n', classification_report(y_test, y_hat))
-    return y_hat
+    return model
 
