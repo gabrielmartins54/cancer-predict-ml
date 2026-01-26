@@ -7,10 +7,11 @@ def main():
     X = x_data(clean_data())
     y = y_data(clean_data())
 
-    scaler = StandardScaler()
-    X = scaler.fit_transform(X)
-
     x_train, x_test, y_train, y_test = split(X, y)
+
+    scaler = StandardScaler()
+    x_train = scaler.fit_transform(x_train)
+    x_test = scaler.fit_transform(x_test)
 
     prediction = train_test(x_train, x_test, y_train, y_test)
 
